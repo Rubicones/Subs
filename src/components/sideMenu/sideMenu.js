@@ -2,7 +2,7 @@ import "./sideMenu.sass";
 import Tile from "../tile/tile";
 import { useState, useEffect, useRef } from "react";
 
-function SideMenu({ adderActive, hideMenu, addNew, submitAddTile }) {
+function SideMenu({ adderActive, hideMenu, addNew, submitAddTile, toOpenMenu }) {
     const addNewBtn = useRef(0);
     const cross = useRef(0);
     const hiddenMenu = useRef(0);
@@ -12,6 +12,18 @@ function SideMenu({ adderActive, hideMenu, addNew, submitAddTile }) {
     const title = useRef(0);
     const cost = useRef(0);
     const link = useRef(0);
+
+    useEffect(() => {
+        console.log(toOpenMenu)
+        if (toOpenMenu === true)
+            addNew(addNewBtn, hiddenMenu)
+        else if (parseInt(toOpenMenu) > 0)
+            addNew(addNewBtn, hiddenMenu, toOpenMenu, datePickerLast,
+                datePickerNext,
+                title,
+                cost,
+                link)
+    }, [toOpenMenu])
 
     return (
         <aside className="side-menu">
@@ -29,9 +41,7 @@ function SideMenu({ adderActive, hideMenu, addNew, submitAddTile }) {
             <div className="options-container">
                 <div
                     className="menu-btn"
-                    onClick={() => {
-                        addNew(addNewBtn, hiddenMenu);
-                    }}
+                    onClick={() => {addNew(addNewBtn, hiddenMenu)}}
                     ref={addNewBtn}
                 >
                     Add new sub
@@ -77,8 +87,9 @@ function SideMenu({ adderActive, hideMenu, addNew, submitAddTile }) {
                                     title,
                                     cost,
                                     link,
-                                    addNewBtn, 
-                                    hiddenMenu
+                                    addNewBtn,
+                                    hiddenMenu,
+                                    toOpenMenu
                                 );
                             }}>
                             Add sub
