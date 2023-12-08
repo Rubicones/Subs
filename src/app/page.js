@@ -1,9 +1,11 @@
-import "./App.sass";
-import Tile from "../tile/tile";
-import { useState, useEffect } from "react";
-import SideMenu from "../sideMenu/sideMenu";
+"use client"
 
-function App() {
+import styles from "./page.module.sass";
+import Tile from "./tile/tile";
+import { useState, useEffect } from "react";
+import SideMenu from "./sideMenu/sideMenu";
+
+function Home() {
     const [adderActive, setAdderActive] = useState(false);
     const [tilesArray, setTilesArray] = useState([]);
     const [toOpenMenu, setToOpenMenu] = useState(false);
@@ -135,16 +137,16 @@ function App() {
     return (
         <>
             <header>
-                <h1 className="title">Subs</h1>
-                <h2 className="subtitle">Manage your subscribitions</h2>
+                <h1 className={styles.title}>Subs</h1>
+                <h2 className={styles.subtitle}>Manage your subscribitions</h2>
             </header>
 
-            <div className="container">
-                <div className="tiles-container">
+            <div className={styles.container}>
+                <div className={styles["tiles-container"]}>
                     {tilesArray}
 
                     <div
-                        className="add-new"
+                        className={styles["add-new"]}
                         onClick={() => {
                             openMenu();
                         }}
@@ -162,4 +164,4 @@ function App() {
     );
 }
 
-export default App;
+export default Home;

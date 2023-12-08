@@ -1,4 +1,4 @@
-import "./sideMenu.sass";
+import styles from "./sideMenu.module.sass";
 import Tile from "../tile/tile";
 import { useState, useEffect, useRef } from "react";
 
@@ -26,10 +26,10 @@ function SideMenu({ adderActive, hideMenu, addNew, submitAddTile, toOpenMenu }) 
     }, [toOpenMenu])
 
     return (
-        <aside className="side-menu">
+        <aside className={styles["side-menu"]}>
             {adderActive ? (
                 <div
-                    className="cross"
+                    className={styles.cross}
                     ref={cross}
                     onClick={() => {
                         hideMenu(addNewBtn, hiddenMenu);
@@ -38,48 +38,48 @@ function SideMenu({ adderActive, hideMenu, addNew, submitAddTile, toOpenMenu }) 
             ) : (
                 ""
             )}
-            <div className="options-container">
+            <div className={styles["options-container"]}>
                 <div
-                    className="menu-btn"
+                    className={styles["menu-btn"]}
                     onClick={() => {addNew(addNewBtn, hiddenMenu)}}
                     ref={addNewBtn}
                 >
                     Add new sub
                 </div>
                 {adderActive ? (
-                    <div className="hiddenPart" ref={hiddenMenu}>
-                        <div className="label">
+                    <div className={styles.hiddenPart} ref={hiddenMenu}>
+                        <div className={styles.label}>
                             Pick date of the last payment *
                         </div>
                         <input
                             type="date"
-                            className="datepicker"
+                            className={styles.datepicker}
                             ref={datePickerLast}
                         />
-                        <div className="label">
+                        <div className={styles.label}>
                             Pick date of the next payment *
                         </div>
                         <input
                             type="date"
-                            className="datepicker"
+                            className={styles.datepicker}
                             ref={datePickerNext}
                         />
-                        <div className="label">Title *</div>
+                        <div className={styles.label}>Title *</div>
                         <input
                             type="text"
-                            className="name-setter"
+                            className={styles["name-setter"]}
                             ref={title}
                         />
-                        <div className="label">Cost in USD *</div>
+                        <div className={styles.label}>Cost in USD *</div>
                         <input
                             type="number"
-                            className="name-setter"
+                            className={styles["name-setter"]}
                             ref={cost}
                         />
-                        <div className="label">Link</div>
-                        <input type="text" className="name-setter" ref={link} />
+                        <div className={styles.label}>Link</div>
+                        <input type="text" className={styles["name-setter"]} ref={link} />
                         <button
-                            className="add-submit-btn"
+                            className={styles["add-submit-btn"]}
                             onClick={() => {
                                 submitAddTile(
                                     datePickerLast,

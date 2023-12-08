@@ -1,0 +1,114 @@
+.tileDropShadow
+    position: relative
+    width: 180px
+    height: 240px
+    box-shadow: 0 0 30px 15px #e1e0e0
+    background-color: #e1e0e0dc
+    border-radius: 40px
+
+
+    .tile
+        position: absolute
+        top: 0
+        left: 0
+        .tile-inner
+            text-align: center
+            transition: transform 0.8s
+            transform-style: preserve-3d
+            position: relative
+            width: 180px
+            height: 240px
+            background-color: #faf8f8
+            border: 1px solid #d5d4d4d7
+            text-align: center
+            perspective: 1000px
+            border-radius: 40px
+
+
+
+            
+
+        .tile-front, .tile-back
+            position: absolute
+            width: 100%
+            height: 100%
+            -webkit-backface-visibility: hidden
+            backface-visibility: hidden
+
+
+
+        
+        .tile-back
+            transform: rotateY(180deg)
+            display: flex
+            flex-direction: column
+            padding: 15%
+            box-sizing: border-box
+            justify-content: center
+            font-size: 25px
+
+            .cost-header, .date-header
+                font-size: 15px
+                font-weight: 600
+
+            .cost
+                color: green
+                
+            .cost, .date
+                margin-bottom: 10px
+                font-weight: 300
+            
+            .edit-btn
+                height: 20px
+                width: 20px
+                position: absolute
+                top: 20px
+                right: 20px
+            
+            .trash-btn
+                height: 20px
+                width: 20px
+                position: absolute
+                top: 20px
+                left: 20px
+
+            .link
+                text-decoration: none
+
+
+        .name
+            display: flex
+            justify-content: center
+            align-items: center
+            height: 50px
+            font-size: 25px
+            transform: translateY(-55px)
+            letter-spacing: 1px
+            padding: 0 10px 0 10px
+
+        .days-left
+            display: block
+            transform: translateY(-115px)
+            font-size: 40px
+            font-family: 'Roboto', sans-serif
+            font-weight: 500
+            color: red
+
+
+        &:hover
+            .tile-inner
+                transform: rotateY(180deg)
+
+
+
+.svg-cont
+    width: 100%
+    aspect-ratio: 1/1
+
+    .inner-circle 
+        transition: 0.9s stroke-dashoffset
+        transform: rotate(-90deg)
+        transform-origin: 50% 50%
+        stroke-linecap: round
+        stroke: white
+  
